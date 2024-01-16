@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetish</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background: url('backfetish.png') no-repeat center center fixed; 
+            background-size: cover;
+        }
+
+        header {
+            text-align: center;
+        }
+
+        .logo-container {
+            position: relative;
+            cursor: pointer;
+        }
+
+        img {
+            max-width: 50%; /* Adjust the size of the logo */
+            height: 10;
+            margin-bottom: 1; /* Adjust this margin as needed */
+            display: block; /* Ensure proper spacing */
+            margin-left: auto; /* Center the logo horizontally */
+            margin-right: auto; /* Center the logo horizontally */
+            transition: transform 0.3s ease-in-out; /* Smooth scaling transition */
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            background: none; /* Remove background color */
+            padding: 5px 0; /* Adjust the padding to make the bar smaller */
+            width: fit-content; /* Adjust the width to make the bar smaller */
+            border: 2px solid black; /* Add a border to create a contour-like line */
+            border-radius: 10px; /* Add rounded corners */
+            margin-top: 1; /* Adjust the margin to move the navigation bar higher */
+        }
+
+        nav a {
+            text-decoration: none;
+            color: black; /* Text color is changed to black */
+            font-weight: bold;
+            padding: 5px 15px; /* Adjust the padding to make the links smaller */
+            transition: background-color 0.3s;
+            font-family: 'Poppins', sans-serif; /* Set the font to Poppins */
+        }
+
+        nav a:hover {
+            background-color: #333; /* Darken the background on hover */
+            color: rgb(255, 0, 0); /* Change text color on hover */
+        }
+
+        .magazine-text {
+            text-align: center;
+            max-width: 500px;
+            margin-top: 1px; 
+            color: rgb(0, 0, 0);
+            font-family: 'Poppins', sans-serif; /* Set the font to Poppins */
+        }
+    </style>
+</head>
+<body>
+    <!-- Header section -->
+    <header>
+        <div class="logo-container" onclick="window.location.href='https://www.instagram.com/fetishmagazine_/'">
+            <img src="logofetish.png" alt="Fetish Magazine Logo" id="logo">
+        </div>
+    </header>
+
+    <!-- Navigation bar -->
+    <nav>
+        <a href="#">Concept</a>
+        <a href="#">Articles</a>
+        <a href="#">Photos</a>
+        <a href="#">Events</a>
+        <a href="#">Podcast</a>
+        <a href="#">Sale</a>
+    </nav>
+
+    <!-- Magazine text -->
+    <div class="magazine-text">
+        <p>
+            The magazine "Fetish" represents an effort to delve deeper into various aspects of fetish and fetishism through systematic research and discussions on the definition of fetishes. My approach focuses on individual perspectives, where each subject approaches the topic from their own experiences. Some view fetishism as merely a sexual preference, while others prefer a theory that understands fetishes as rituals. I discuss the consciousness or unconsciousness of fetishes, emphasizing that eliminating one fetish may give rise to new ones. Each individual has a unique perspective on fetishes and creates their own definition of this phenomenon.
+        </p>
+        <p>
+            In the introductory part of the magazine, I aim to familiarize readers with the issue of fetish and subsequently reflect on various perspectives that may exist. Sometimes, a fetish is perceived as a relationship with material objects. My personal belief is that every form of fetish has its legitimacy, and my effort lies in identifying those that resonate with me the most.
+        </p>
+        <p>
+            The "Fetish" magazine serves as a means to raise awareness that fetish/fetishism doesn't only encompass sexual expressions. Instead, it is a complex topic often tabooed in Czech society.
+        </p>
+    </div>
+
+    <!-- Your website content goes here -->
+
+    <script>
+        const logo = document.getElementById('logo');
+
+        logo.addEventListener('mouseenter', () => {
+            logo.style.transform = 'scale(1.2)';
+        });
+
+        logo.addEventListener('mouseleave', () => {
+            logo.style.transform = 'scale(1)';
+        });
+    </script>
+</body>
+</html>
