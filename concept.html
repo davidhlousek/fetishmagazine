@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetish</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap">
+    <style>
+        /* Your existing styles */
+
+        /* Webcam overlay styles */
+        #webcam-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 1); /* Black background */
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            color: rgb(255, 0, 0);
+            font-weight: bold;
+            text-align: center;
+        }
+
+        #webcam-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensure video covers the entire screen */
+            filter: grayscale(100%); /* Black and white */
+        }
+
+        #webcam-content {
+            z-index: 1000; /* Make sure the content is above the video */
+            text-align: center;
+        }
+
+        p {
+            font-size: 1.5em; /* Larger text */
+            margin-bottom: 20px;
+        }
+
+        button {
+            margin-top: auto; /* Push the button to the bottom */
+            padding: 10px 20px; /* Adjust padding */
+            background-color: transparent; /* No background color */
+            color: rgb(255, 255, 255); /* Text color */
+            border: 2px solid #333; /* Add border */
+            border-radius: 5px; /* Add rounded corners */
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #333; /* Darken the background on hover */
+            color: rgb(255, 0, 0); /* Change text color on hover */
+            border-color: #555; /* Darken border on hover */
+        }
+    </style>
+</head>
+<body>
+    <!-- Your existing HTML -->
+
+    <!-- Concept section -->
+    <section id="concept">
+        <div class="concept-text">
+            <!-- Your existing concept text -->
+        </div>
+    </section>
+
+    <!-- Webcam overlay -->
+    <div id="webcam-overlay">
+        <video id="webcam-video" autoplay></video>
+        <div id="webcam-content">
+            <p>What's your fetish?</p>
+            <button onclick="closeWebcamOverlay()">Close</button>
+        </div>
+    </div>
+
+    <!-- Your existing HTML -->
+
+    <script>
+        // Function to open the webcam overlay
+        function openWebcamOverlay() {
+            document.getElementById('webcam-overlay').style.display = 'flex';
+
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function (stream) {
+                    document.getElementById('webcam-video').srcObject = stream;
+                })
+                .catch(function (err) {
+                    console.error('Error accessing webcam: ', err);
+                });
+        }
+
+        // Function to close the webcam overlay
+        function closeWebcamOverlay() {
+            var videoElement = document.getElementById('webcam-video');
+            var stream = videoElement.srcObject;
+            var tracks = stream.getTracks();
+
+            tracks.forEach(function (track) {
+                track.stop();
+            });
+
+            videoElement.srcObject = null;
+
+            document.getElementById('webcam-overlay').style.display = 'none';
+        }
+
+        // Call openWebcamOverlay function when the page loads (you may adjust this based on user interaction)
+        window.onload = openWebcamOverlay;
+    </script>
+</body>
+</html>
