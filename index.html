@@ -1,24 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fetish</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap">
     <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-            background: url('backfetish.png') no-repeat center center fixed; 
-            background-size: cover;
-        }
+        /* Your existing styles... */
 
-        header {
-            text-align: center;
+        body {
+            cursor: url('/Users/davidhloussek/Desktop/fetishmagazine/PNG/dot_cursor.png') 16 16, auto;
+            /* Set custom cursor with dot image */
+            background-image: url('/Users/davidhloussek/Desktop/fetishmagazine/jaj.JPG');
+            background-size: cover;
+            background-position: center;
         }
 
         .logo-container {
@@ -27,90 +23,127 @@
         }
 
         img {
-            max-width: 50%; /* Adjust the size of the logo */
-            height: 10;
-            margin-bottom: 1; /* Adjust this margin as needed */
-            display: block; /* Ensure proper spacing */
-            margin-left: auto; /* Center the logo horizontally */
-            margin-right: auto; /* Center the logo horizontally */
-            transition: transform 0.3s ease-in-out; /* Smooth scaling transition */
+            max-width: 50%;
+            height: auto;
+            margin-bottom: 1%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            transition: transform 0.3s ease-in-out;
         }
 
-        nav {
-            display: flex;
-            justify-content: space-around;
-            background: none; /* Remove background color */
-            padding: 5px 0; /* Adjust the padding to make the bar smaller */
-            width: fit-content; /* Adjust the width to make the bar smaller */
-            border: 2px solid black; /* Add a border to create a contour-like line */
-            border-radius: 10px; /* Add rounded corners */
-            margin-top: 1; /* Adjust the margin to move the navigation bar higher */
+        /* Updated logo animation */
+        .logo-container:hover img {
+            transform: scale(1.2);
         }
 
-        nav a {
+        /* Button to toggle menu bar */
+        .menu-button {
+            background-color: transparent;
+            color: rgb(255, 255, 255);
+            /* Change text color to black */
+            border: 2px solid rgb(255, 255, 255);
+            /* Add a rectangular outline */
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            padding: 10px;
+            z-index: 1;
+            transition: background-color 0.3s, color 0.3s;
+            border-radius: 0;
+            /* Remove rounded corners */
+        }
+
+        .menu-button:hover {
+            background-color: rgba(255, 255, 255, 0);
+            /* Semi-transparent background on hover */
+            color: rgb(255, 0, 0);
+            /* Change text color to red on hover */
+        }
+
+        /* Navigation bar (menu bar) */
+        .menu-bar {
+            background-image: url(/Users/davidhloussek/Desktop/fetishmagazine/JAJ2.JPG);
+            /* Set background image */
+            background-size: cover;
+            background-position: center;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 100%;
+            overflow: hidden;
+            transition: width 0.3s ease-in-out;
+            /* Initial slide-out transition */
+        }
+
+        .menu-bar.visible {
+            width: 250px;
+            /* Width when visible */
+        }
+
+        .menu-bar a {
+            display: block;
+            color: rgb(255, 255, 255);
+            /* Change text color to black */
+            padding: 10px;
             text-decoration: none;
-            color: black; /* Text color is changed to black */
-            font-weight: bold;
-            padding: 5px 15px; /* Adjust the padding to make the links smaller */
-            transition: background-color 0.3s;
-            font-family: 'Poppins', sans-serif; /* Set the font to Poppins */
+            font-family: 'Poppins', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+            /* Updated transition to include color */
+            border: 2px solid transparent;
+            border-radius: 0;
+            /* Remove rounded corners */
+            margin-top: 10px;
+            /* Adjust spacing between menu items */
         }
 
-        nav a:hover {
-            background-color: #333; /* Darken the background on hover */
-            color: rgb(255, 0, 0); /* Change text color on hover */
+        .menu-bar a:hover {
+            background-color: rgba(255, 255, 255, 0);
+            /* Semi-transparent red on hover */
+            color: red;
+            /* Change text color to red on hover */
         }
 
-        .magazine-text {
-            text-align: center;
-            max-width: 500px;
-            margin-top: 1px; 
-            color: rgb(0, 0, 0);
-            font-family: 'Poppins', sans-serif; /* Set the font to Poppins */
-        }
+        /* Your existing styles... */
     </style>
 </head>
+
 <body>
     <!-- Header section -->
     <header>
-        <div class="logo-container" onclick="window.location.href='https://www.instagram.com/fetishmagazine_/'">
-            <img src="logofetish.png" alt="Fetish Magazine Logo" id="logo">
+        <div class="logo-container"
+            onclick="window.location.href='https://www.instagram.com/fetishmagazine_/'">
+            <img src="/Users/davidhloussek/Desktop/fetishmagazine/logofetish.png" alt="Fetish Magazine Logo"
+                id="logo">
         </div>
     </header>
 
-<!-- Navigation bar -->
-<nav>
-    <a href="concept.html">Concept</a> <!-- Add the link to the concept page -->
-    <a href="#">Articles</a>
-    <a href="#">Photos</a>
-    <a href="#">Events</a>
-    <a href="#">Podcast</a>
-    <a href="#">Sale</a>
-</nav>
-    <!-- Magazine text -->
-    <div class="magazine-text">
-        <p>
-            The magazine "Fetish" represents an effort to delve deeper into various aspects of fetish and fetishism through systematic research and discussions on the definition of fetishes. My approach focuses on individual perspectives, where each subject approaches the topic from their own experiences. Some view fetishism as merely a sexual preference, while others prefer a theory that understands fetishes as rituals. I discuss the consciousness or unconsciousness of fetishes, emphasizing that eliminating one fetish may give rise to new ones. Each individual has a unique perspective on fetishes and creates their own definition of this phenomenon.
-        </p>
-        <p>
-            In the introductory part of the magazine, I aim to familiarize readers with the issue of fetish and subsequently reflect on various perspectives that may exist. Sometimes, a fetish is perceived as a relationship with material objects. My personal belief is that every form of fetish has its legitimacy, and my effort lies in identifying those that resonate with me the most.
-        </p>
-        <p>
-            The "Fetish" magazine serves as a means to raise awareness that fetish/fetishism doesn't only encompass sexual expressions. Instead, it is a complex topic often tabooed in Czech society.
-        </p>
+    <!-- Button to toggle menu bar -->
+    <button class="menu-button" onmouseover="showMenuBar()" onmouseout="hideMenuBar()">Menu</button>
+
+    <!-- Navigation bar (menu bar) -->
+    <div class="menu-bar" id="menuBar" onmouseover="showMenuBar()" onmouseout="hideMenuBar()">
+        <a href="#" onclick="navigateTo('Concept')">Concept</a>
+        <a href="#" onclick="navigateTo('Articles')">Articles</a>
+        <a href="#" onclick="navigateTo('Photos')">Photos</a>
+        <a href="#" onclick="navigateTo('Events')">Events</a>
+        <a href="#" onclick="navigateTo('Podcast')">Podcast</a>
+        <a href="#" onclick="navigateTo('Sale')">Sale</a>
     </div>
 
-<!-- Videos -->
-<video width="400" controls>
-    <source src="/Users/davidhloussek/Desktop/fetishmagazine/video2.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
-</div>
+    <!-- Magazine text -->
+    <div class="magazine-text">
+        <!-- Your existing text content... -->
+    </div>
 
     <!-- Your website content goes here -->
 
     <script>
         const logo = document.getElementById('logo');
+        const menuBar = document.getElementById('menuBar');
 
         logo.addEventListener('mouseenter', () => {
             logo.style.transform = 'scale(1.2)';
@@ -119,7 +152,31 @@
         logo.addEventListener('mouseleave', () => {
             logo.style.transform = 'scale(1)';
         });
+
+        function showMenuBar() {
+            menuBar.classList.add('visible');
+        }
+
+        function hideMenuBar() {
+            setTimeout(() => {
+                menuBar.classList.remove('visible');
+            }, 2000); // Adjust the duration in milliseconds (1000ms = 1s)
+        }
+
+        function navigateTo(section) {
+            // Add your navigation logic here
+            console.log(`Navigating to ${section}`);
+
+            // Check if the section is 'Concept' and navigate accordingly
+            if (section.toLowerCase() === 'concept') {
+                window.location.href = '/Users/davidhloussek/Desktop/fetishmagazine/concept.html';
+            }
+
+            // You can close the menu bar if needed
+            hideMenuBar();
+        }
     </script>
 </body>
+
 </html>
 
