@@ -10,9 +10,9 @@
         /* Your existing styles... */
 
         body {
-            cursor: url("dot_cursor.png") 16 16, auto;
+            cursor: url('dot_cursor.png') 16 16, auto;
             /* Set custom cursor with dot image */
-            background-image: url("jaj.JPG");
+            background-image: url('jaj.JPG');
             background-size: cover;
             background-position: center;
         }
@@ -114,10 +114,8 @@
 <body>
     <!-- Header section -->
     <header>
-        <div class="logo-container"
-            onclick="window.location.href='https://www.instagram.com/fetishmagazine_/'">
-            <img src="logofetish.png" alt="Fetish Magazine Logo"
-                id="logo">
+        <div class="logo-container" onclick="window.location.href='https://www.instagram.com/fetishmagazine_/'">
+            <img src="logofetish.png" alt="Fetish Magazine Logo" id="logo">
         </div>
     </header>
 
@@ -169,7 +167,7 @@
 
             // Check if the section is 'Concept' and navigate accordingly
             if (section.toLowerCase() === 'concept') {
-                window.location.href = 'concept.html';
+                window.location.href = 'concept.html'; // Use relative path
             }
 
             // You can close the menu bar if needed
