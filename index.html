@@ -10,9 +10,8 @@
         /* Your existing styles... */
 
         body {
-            cursor: url('dot_cursor.png') 16 16, auto;
+            cursor: url('/Users/davidhloussek/Desktop/fetishmagazine/PNG/dot_cursor.png') 16 16, auto;
             /* Set custom cursor with dot image */
-            background-image: url('jaj.JPG');
             background-size: cover;
             background-position: center;
         }
@@ -65,7 +64,7 @@
 
         /* Navigation bar (menu bar) */
         .menu-bar {
-            background-image: url('JAJ2.JPG');
+            background-image: url(/Users/davidhloussek/Desktop/fetishmagazine/JAJ2.JPG);
             /* Set background image */
             background-size: cover;
             background-position: center;
@@ -114,8 +113,10 @@
 <body>
     <!-- Header section -->
     <header>
-        <div class="logo-container" onclick="window.location.href='https://www.instagram.com/fetishmagazine_/'">
-            <img src="logofetish.png" alt="Fetish Magazine Logo" id="logo">
+        <div class="logo-container"
+            onclick="window.location.href='https://www.instagram.com/fetishmagazine_/'">
+            <img src="/Users/davidhloussek/Desktop/fetishmagazine/logofetish.png" alt="Fetish Magazine Logo"
+                id="logo">
         </div>
     </header>
 
@@ -167,12 +168,40 @@
 
             // Check if the section is 'Concept' and navigate accordingly
             if (section.toLowerCase() === 'concept') {
-                window.location.href = 'concept.html'; // Use relative path
+                window.location.href = '/Users/davidhloussek/Desktop/fetishmagazine/concept.html';
             }
 
             // You can close the menu bar if needed
             hideMenuBar();
         }
+
+        const backgroundImages = [
+            '/Users/davidhloussek/Desktop/fetishmagazine/jaj.jpg',
+            '/Users/davidhloussek/Desktop/fetishmagazine/jaj2.jpg',
+            '/Users/davidhloussek/Desktop/fetishmagazine/jaj3.jpg',
+            '/Users/davidhloussek/Desktop/fetishmagazine/jaj4.jpg',
+            '/Users/davidhloussek/Desktop/fetishmagazine/jaj5.jpg',
+            '/Users/davidhloussek/Desktop/fetishmagazine/jaj6.jpg',
+            '/Users/davidhloussek/Desktop/fetishmagazine/jaj7.jpg',
+            '/Users/davidhloussek/Desktop/fetishmagazine/jaj8.jpg',
+            '/Users/davidhloussek/Desktop/fetishmagazine/jaj9.jpg',
+            // Add more image URLs as needed
+        ];
+
+        let currentImageIndex = 0;
+
+        function changeBackgroundImage() {
+            document.body.style.backgroundImage = `url('${backgroundImages[currentImageIndex]}')`;
+
+            // Increment the index for the next image
+            currentImageIndex = (currentImageIndex + 1) % backgroundImages.length;
+        }
+
+        // Call the function initially
+        changeBackgroundImage();
+
+        // Set an interval to change the background image every minute (60,000 milliseconds)
+        setInterval(changeBackgroundImage, 2000);
     </script>
 </body>
 
