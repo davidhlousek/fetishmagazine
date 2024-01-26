@@ -69,8 +69,8 @@
         </div>
     </header>
 
-    <!-- Button to toggle menu bar -->
-    <button class="menu-button" onmouseover="showMenuBar()" onmouseout="hideMenuBar()">Menu</button>
+    <!-- Button to toggle menu bar for mobile -->
+    <button class="menu-button" onclick="toggleMenuBar()">Menu</button>
 
     <!-- Navigation bar (menu bar) -->
     <div class="menu-bar" id="menuBar" onmouseover="showMenuBar()" onmouseout="hideMenuBar()">
@@ -133,6 +133,11 @@
 
             // You can close the menu bar if needed
             hideMenuBar();
+        }
+
+        function toggleMenuBar() {
+            // Toggle the visibility of the menu bar
+            menuBar.classList.toggle('visible');
         }
 
         const backgroundImages = [
