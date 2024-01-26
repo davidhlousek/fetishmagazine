@@ -194,14 +194,14 @@
             document.body.style.backgroundImage = `url('${backgroundImages[currentImageIndex]}')`;
 
             // Increment the index for the next image
-            currentImageIndex = (currentImageIndex + 1) % backgroundImages.length;
+            currentImageIndex = (currentImageIndex + 0) % backgroundImages.length;
         }
 
         // Call the function initially
         changeBackgroundImage();
 
         // Set an interval to change the background image every minute (60,000 milliseconds)
-        setInterval(changeBackgroundImage, 2000);
+        setInterval(changeBackgroundImage, 1000);
     </script>
 </body>
 
