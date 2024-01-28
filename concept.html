@@ -66,6 +66,22 @@
             color: rgb(255, 0, 0); /* Change text color on hover */
             border-color: #555; /* Darken border on hover */
         }
+
+        /* Game styles */
+        #game-section {
+            position: relative;
+            width: 100%;
+            height: 300px;
+        }
+
+        #game-image {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px; /* Adjusted size for better visibility */
+            height: 100px; /* Adjusted size for better visibility */
+        }
     </style>
 </head>
 <body>
@@ -87,6 +103,11 @@
         </div>
     </div>
 
+    <!-- Game section -->
+    <section id="game-section">
+        <img id="game-image" src="logofetish.png" alt="Game Image">
+    </section>
+
     <!-- Your existing HTML -->
 
     <script>
@@ -103,7 +124,7 @@
                 });
         }
 
-        // Function to close the webcam overlay
+        // Function to close the webcam overlay and navigate to index.html
         function closeWebcamOverlay() {
             var videoElement = document.getElementById('webcam-video');
             var stream = videoElement.srcObject;
@@ -116,7 +137,31 @@
             videoElement.srcObject = null;
 
             document.getElementById('webcam-overlay').style.display = 'none';
+
+            // Navigate to the main site (index.html)
+            window.location.href = 'index.html';
         }
+
+        // Game controls
+        var gameImage = document.getElementById('game-image');
+
+        document.addEventListener('keydown', function (event) {
+            var stepSize = 10; // Adjust the step size as needed
+            switch (event.key) {
+                case 'w':
+                    gameImage.style.bottom = (parseInt(gameImage.style.bottom) + stepSize) + 'px';
+                    break;
+                case 'a':
+                    gameImage.style.left = (parseInt(gameImage.style.left) - stepSize) + 'px';
+                    break;
+                case 's':
+                    gameImage.style.bottom = (parseInt(gameImage.style.bottom) - stepSize) + 'px';
+                    break;
+                case 'd':
+                    gameImage.style.left = (parseInt(gameImage.style.left) + stepSize) + 'px';
+                    break;
+            }
+        });
 
         // Call openWebcamOverlay function when the page loads (you may adjust this based on user interaction)
         window.onload = openWebcamOverlay;
