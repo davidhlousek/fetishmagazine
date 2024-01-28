@@ -155,9 +155,10 @@
         <p id="displayedUserText"></p>
     </div>
 
-    <script>
+        <script>
         const logo = document.getElementById('logo');
         const menuBar = document.getElementById('menuBar');
+        let currentImageIndex = 0;
 
         logo.addEventListener('mouseenter', () => {
             logo.style.transform = 'scale(1.2)';
@@ -203,7 +204,7 @@
             document.getElementById('userText').value = '';
         }
 
-     const backgroundImages = [
+        const backgroundImages = [
             'jaj.JPG',
             'jaj2.JPG',
             'jaj3.JPG',
@@ -225,7 +226,7 @@
         changeBackgroundImage();
 
         // Set an interval to change the background image every 5 seconds (5000 milliseconds)
-        setInterval(changeBackgroundImage, 1000);
+        setInterval(changeBackgroundImage, 5000);
     </script>
 </body>
 
