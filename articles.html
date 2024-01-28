@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image: url('background/jaj.JPG'), url('backfetish.png');
+            background-size: cover, auto;
+            background-position: center, top left;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        #content {
+            text-align: center;
+            color: white;
+        }
+
+        @keyframes backgroundAnimation {
+            0% {
+                background-position: center, top left;
+                background-size: cover, auto;
+                transform: scale(1);
+            }
+
+            50% {
+                background-position: top right, bottom right;
+                background-size: auto, cover;
+                transform: scale(1.2);
+            }
+
+            100% {
+                background-position: center, top left;
+                background-size: cover, auto;
+                transform: scale(1);
+            }
+        }
+
+        body {
+            animation: backgroundAnimation 4s infinite;
+        }
+
+        #pdfLink {
+            cursor: pointer;
+        }
+
+        /* Button to go back to the main site */
+        #closeButton {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: transparent;
+            color: rgb(255, 255, 255);
+            border: 2px solid rgb(255, 255, 255);
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            padding: 10px;
+            transition: background-color 0.3s, color 0.3s;
+            border-radius: 0;
+        }
+
+        #closeButton:hover {
+            background-color: rgba(255, 255, 255, 0);
+            color: rgb(255, 0, 0);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="content">
+        <!-- Small image -->
+        <a href="mag_fetish.pdf" id="pdfLink">
+            <img src="PNG/button_first_edi.png" alt="Small Image" width="500" height="500">
+        </a>
+    </div>
+
+    <!-- Close button to go back to the main site -->
+    <button id="closeButton" onclick="goToMainSite()">Close</button>
+
+    <script>
+        function goToMainSite() {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+
+</html>
