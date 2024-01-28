@@ -203,7 +203,7 @@
             document.getElementById('userText').value = '';
         }
 
-        const backgroundImages = [
+     const backgroundImages = [
             'jaj.JPG',
             'jaj.JPG',
             'jaj.JPG',
@@ -220,15 +220,16 @@
             // Add more image filenames as needed
         ];
 
-        let currentImageIndex = 0;
-
         function changeBackgroundImage() {
             document.body.style.backgroundImage = `url('${backgroundImages[currentImageIndex]}')`;
             currentImageIndex = (currentImageIndex + 1) % backgroundImages.length;
         }
 
+        // Call the function initially
         changeBackgroundImage();
-        setInterval(changeBackgroundImage, 1000);
+
+        // Set an interval to change the background image every 5 seconds (5000 milliseconds)
+        setInterval(changeBackgroundImage, 5000);
     </script>
 </body>
 
