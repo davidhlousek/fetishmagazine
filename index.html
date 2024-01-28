@@ -7,11 +7,12 @@
     <title>Fetish</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap">
     <style>
+        /* Your existing styles... */
+
         body {
-            cursor: url('cursor_dot.png') 16 16, auto; /* Adjust cursor image path */
+            cursor: none; /* Hide the default cursor */
             background-size: cover;
             background-position: center;
-            margin: 0; /* Reset default margin for body */
         }
 
         .logo-container {
@@ -19,22 +20,26 @@
             cursor: pointer;
         }
 
-        img#logo {
+        img {
             max-width: 50%;
             height: auto;
-            margin: 1% auto;
+            margin-bottom: 1%;
             display: block;
+            margin-left: auto;
+            margin-right: auto;
             transition: transform 0.3s ease-in-out;
         }
 
-        .logo-container:hover img#logo {
+        /* Updated logo animation */
+        .logo-container:hover img {
             transform: scale(1.2);
         }
 
+        /* Button to toggle menu bar */
         .menu-button {
             background-color: transparent;
-            color: #fff;
-            border: 2px solid #fff;
+            color: rgb(255, 255, 255);
+            border: 2px solid rgb(255, 255, 255);
             cursor: pointer;
             font-family: 'Poppins', sans-serif;
             position: fixed;
@@ -48,9 +53,10 @@
 
         .menu-button:hover {
             background-color: rgba(255, 255, 255, 0);
-            color: red;
+            color: rgb(255, 0, 0);
         }
 
+        /* Navigation bar (menu bar) */
         .menu-bar {
             background-size: cover;
             background-position: center;
@@ -69,7 +75,7 @@
 
         .menu-bar a {
             display: block;
-            color: #fff;
+            color: rgb(255, 255, 255);
             padding: 10px;
             text-decoration: none;
             font-family: 'Poppins', sans-serif;
@@ -84,8 +90,9 @@
             color: red;
         }
 
+        /* Dawn section for submitting answers */
         .dawn-section {
-            background-image: url('path/to/dawn-background-image.jpg'); /* Replace with actual image path */
+            background-image: url();
             background-size: cover;
             background-position: center;
             height: 500px;
@@ -127,27 +134,49 @@
             font-weight: bold;
             outline: none;
         }
+
+        /* Custom cursor */
+        .custom-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background-color: white; /* Filled dot */
+            border-radius: 50%;
+            mix-blend-mode: difference;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: transform 0.2s ease-in-out;
+            z-index: 9999;
+        }
+
+        /* Your existing styles... */
     </style>
 </head>
 
 <body>
+    <!-- Header section -->
     <header>
         <div class="logo-container" onclick="window.location.href='https://www.instagram.com/fetishmagazine_/'">
             <img src="logofetish.png" alt="Fetish Magazine Logo" id="logo">
         </div>
     </header>
 
+    <!-- Button to toggle menu bar -->
     <button class="menu-button" onmouseover="showMenuBar()" onmouseout="hideMenuBar()">Menu</button>
 
+    <!-- Navigation bar (menu bar) -->
     <div class="menu-bar" id="menuBar" onmouseover="showMenuBar()" onmouseout="hideMenuBar()">
         <a href="#" onclick="navigateTo('Concept')">Concept</a>
         <a href="#" onclick="navigateTo('Articles')">Articles</a>
-        <a href="#" onclick="navigateTo('Photos')">Photos</a>
-        <a href="#" onclick="navigateTo('Events')">Events</a>
         <a href="#" onclick="navigateTo('Podcast')">Podcast</a>
-        <a href="#" onclick="navigateTo('Sale')">Sale</a>
     </div>
 
+    <!-- Magazine text -->
+    <div class="magazine-text">
+        <!-- Your existing text content... -->
+    </div>
+
+    <!-- Dawn section for submitting answers -->
     <div class="dawn-section">
         <label for="userText">Fetish is:</label>
         <input type="text" id="userText" placeholder="Enter your answer">
@@ -155,10 +184,15 @@
         <p id="displayedUserText"></p>
     </div>
 
-        <script>
+    <!-- Custom cursor -->
+    <div class="custom-cursor"></div>
+
+    <!-- Your website content goes here -->
+
+    <script>
         const logo = document.getElementById('logo');
         const menuBar = document.getElementById('menuBar');
-        let currentImageIndex = 0;
+        const customCursor = document.querySelector('.custom-cursor');
 
         logo.addEventListener('mouseenter', () => {
             logo.style.transform = 'scale(1.2)';
@@ -166,6 +200,11 @@
 
         logo.addEventListener('mouseleave', () => {
             logo.style.transform = 'scale(1)';
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            customCursor.style.left = `${e.clientX}px`;
+            customCursor.style.top = `${e.clientY}px`;
         });
 
         function showMenuBar() {
@@ -179,12 +218,16 @@
         }
 
         function navigateTo(section) {
-            console.log(`Navigating to ${section}`);
-            if (section.toLowerCase() === 'concept') {
-                window.location.href = 'concept.html';
-            }
-            hideMenuBar();
+        console.log(`Navigating to ${section}`);
+        if (section.toLowerCase() === 'concept') {
+            window.location.href = 'concept.html';
+        } else if (section.toLowerCase() === 'articles') {
+            window.location.href = 'articles.html';
+        } else if (section.toLowerCase() === 'podcast') {
+            window.location.href = 'podcast.html';
         }
+        hideMenuBar();
+    }
 
         function retrieveUserText() {
             const storedUserText = localStorage.getItem('userText');
@@ -214,18 +257,17 @@
             'jaj7.JPG',
             'jaj8.JPG',
             'jaj9.JPG',
-            // Add more image filenames as needed
         ];
+
+        let currentImageIndex = 0;
 
         function changeBackgroundImage() {
             document.body.style.backgroundImage = `url('${backgroundImages[currentImageIndex]}')`;
             currentImageIndex = (currentImageIndex + 1) % backgroundImages.length;
         }
 
-        // Call the function initially
         changeBackgroundImage();
 
-        // Set an interval to change the background image every 5 seconds (5000 milliseconds)
         setInterval(changeBackgroundImage, 1000);
     </script>
 </body>
