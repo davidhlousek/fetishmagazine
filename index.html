@@ -7,13 +7,11 @@
     <title>Fetish</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap">
     <style>
-        /* Your existing styles... */
-
         body {
-            cursor: url('cursor_dot.png') 16 16, auto;
-            /* Set custom cursor with dot image */
+            cursor: url('cursor_dot.png') 16 16, auto; /* Adjust cursor image path */
             background-size: cover;
             background-position: center;
+            margin: 0; /* Reset default margin for body */
         }
 
         .logo-container {
@@ -21,28 +19,22 @@
             cursor: pointer;
         }
 
-        img {
+        img#logo {
             max-width: 50%;
             height: auto;
-            margin-bottom: 1%;
+            margin: 1% auto;
             display: block;
-            margin-left: auto;
-            margin-right: auto;
             transition: transform 0.3s ease-in-out;
         }
 
-        /* Updated logo animation */
-        .logo-container:hover img {
+        .logo-container:hover img#logo {
             transform: scale(1.2);
         }
 
-        /* Button to toggle menu bar */
         .menu-button {
             background-color: transparent;
-            color: rgb(255, 255, 255);
-            /* Change text color to white */
-            border: 2px solid rgb(255, 255, 255);
-            /* Add a rectangular outline */
+            color: #fff;
+            border: 2px solid #fff;
             cursor: pointer;
             font-family: 'Poppins', sans-serif;
             position: fixed;
@@ -52,17 +44,13 @@
             z-index: 1;
             transition: background-color 0.3s, color 0.3s;
             border-radius: 0;
-            /* Remove rounded corners */
         }
 
         .menu-button:hover {
             background-color: rgba(255, 255, 255, 0);
-            /* Semi-transparent background on hover */
-            color: rgb(255, 0, 0);
-            /* Change text color to red on hover */
+            color: red;
         }
 
-        /* Navigation bar (menu bar) */
         .menu-bar {
             background-size: cover;
             background-position: center;
@@ -73,55 +61,45 @@
             height: 100%;
             overflow: hidden;
             transition: width 0.3s ease-in-out;
-            /* Initial slide-out transition */
         }
 
         .menu-bar.visible {
             width: 250px;
-            /* Width when visible */
         }
 
         .menu-bar a {
             display: block;
-            color: rgb(255, 255, 255);
-            /* Change text color to white */
+            color: #fff;
             padding: 10px;
             text-decoration: none;
             font-family: 'Poppins', sans-serif;
             transition: background-color 0.3s, color 0.3s;
-            /* Updated transition to include color */
             border: 2px solid transparent;
             border-radius: 0;
-            /* Remove rounded corners */
             margin-top: 10px;
-            /* Adjust spacing between menu items */
         }
 
         .menu-bar a:hover {
             background-color: rgba(255, 255, 255, 0);
-            /* Semi-transparent red on hover */
             color: red;
-            /* Change text color to red on hover */
         }
 
-        /* Dawn section for submitting answers */
         .dawn-section {
-            background-image: url();
-            /* Set background image */
+            background-image: url('path/to/dawn-background-image.jpg'); /* Replace with actual image path */
             background-size: cover;
             background-position: center;
-            height: 500px; /* Set the desired height */
+            height: 500px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            color: white; /* Set text color to white */
+            color: white;
             font-family: 'Poppins', sans-serif;
             text-align: center;
         }
 
         .dawn-section label {
-            font-size: 2em; /* Set the desired font size */
+            font-size: 2em;
             margin-bottom: 10px;
         }
 
@@ -149,25 +127,18 @@
             font-weight: bold;
             outline: none;
         }
-
-        /* Your existing styles... */
     </style>
 </head>
 
 <body>
-    <!-- Header section -->
     <header>
-        <div class="logo-container"
-            onclick="window.location.href='https://www.instagram.com/fetishmagazine_/'">
-            <img src="logofetish.png" alt="Fetish Magazine Logo"
-                id="logo">
+        <div class="logo-container" onclick="window.location.href='https://www.instagram.com/fetishmagazine_/'">
+            <img src="logofetish.png" alt="Fetish Magazine Logo" id="logo">
         </div>
     </header>
 
-    <!-- Button to toggle menu bar -->
     <button class="menu-button" onmouseover="showMenuBar()" onmouseout="hideMenuBar()">Menu</button>
 
-    <!-- Navigation bar (menu bar) -->
     <div class="menu-bar" id="menuBar" onmouseover="showMenuBar()" onmouseout="hideMenuBar()">
         <a href="#" onclick="navigateTo('Concept')">Concept</a>
         <a href="#" onclick="navigateTo('Articles')">Articles</a>
@@ -177,20 +148,12 @@
         <a href="#" onclick="navigateTo('Sale')">Sale</a>
     </div>
 
-    <!-- Magazine text -->
-    <div class="magazine-text">
-        <!-- Your existing text content... -->
-    </div>
-
-    <!-- Dawn section for submitting answers -->
     <div class="dawn-section">
         <label for="userText">Fetish is:</label>
         <input type="text" id="userText" placeholder="Enter your answer">
         <button onclick="updateUserText()">Submit</button>
         <p id="displayedUserText"></p>
     </div>
-
-    <!-- Your website content goes here -->
 
     <script>
         const logo = document.getElementById('logo');
@@ -211,23 +174,17 @@
         function hideMenuBar() {
             setTimeout(() => {
                 menuBar.classList.remove('visible');
-            }, 2000); // Adjust the duration in milliseconds (1000ms = 1s)
+            }, 2000);
         }
 
         function navigateTo(section) {
-            // Add your navigation logic here
             console.log(`Navigating to ${section}`);
-
-            // Check if the section is 'Concept' and navigate accordingly
             if (section.toLowerCase() === 'concept') {
                 window.location.href = 'concept.html';
             }
-
-            // You can close the menu bar if needed
             hideMenuBar();
         }
 
-        // Function to retrieve user text from local storage
         function retrieveUserText() {
             const storedUserText = localStorage.getItem('userText');
             if (storedUserText) {
@@ -236,34 +193,26 @@
             }
         }
 
-        // Call the function initially to display the stored text
         retrieveUserText();
 
         function updateUserText() {
-            // Get the user-entered text
             const userText = document.getElementById('userText').value;
-
-            // Display the entered text
             const displayedUserText = document.getElementById('displayedUserText');
             displayedUserText.textContent = `Fetish is: ${userText}`;
-
-            // Store the user text in local storage
             localStorage.setItem('userText', userText);
-
-            // Clear the input field after submission
             document.getElementById('userText').value = '';
         }
 
         const backgroundImages = [
-            'jaj.JPG',
-            'jaj2.JPG',
-            'jaj3.JPG',
-            'jaj4.JPG',
-            'jaj5.JPG',
-            'jaj6.JPG',
-            'jaj7.JPG',
-            'jaj8.JPG',
-            'jaj9.JPG',
+            'background/jaj.JPG',
+            'background/jaj2.JPG',
+            'background/jaj3.JPG',
+            'background/jaj4.JPG',
+            'background/jaj5.JPG',
+            'background/jaj6.JPG',
+            'background/jaj7.JPG',
+            'background/jaj8.JPG',
+            'background/jaj9.JPG',
             // Add more image filenames as needed
         ];
 
@@ -271,15 +220,10 @@
 
         function changeBackgroundImage() {
             document.body.style.backgroundImage = `url('${backgroundImages[currentImageIndex]}')`;
-
-            // Increment the index for the next image
             currentImageIndex = (currentImageIndex + 1) % backgroundImages.length;
         }
 
-        // Call the function initially
         changeBackgroundImage();
-
-        // Set an interval to change the background image every minute (60,000 milliseconds)
         setInterval(changeBackgroundImage, 1000);
     </script>
 </body>
