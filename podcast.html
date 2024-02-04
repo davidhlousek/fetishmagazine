@@ -1,1 +1,130 @@
-print (hello world )
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podcast Gallery</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image: url('obal.png'), url('backfetish.png');
+            background-size: cover, auto;
+            background-position: center, top left;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            animation: backgroundAnimation 10s infinite linear;
+        }
+
+        #content {
+            text-align: center;
+            color: white;
+        }
+
+        /* Style for the audio buttons */
+        audio {
+            width: 200px; /* Adjust the width as needed */
+            margin-right: 10px;
+        }
+
+        /* Style for the image gallery */
+        .gallery {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .gallery img {
+            width: 250px; /* Adjust the width of the images */
+            margin: 15px; /* Adjust the margin as needed */
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.2);
+        }
+
+        /* Button to go back to the main site */
+        #closeButton {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: transparent;
+            color: rgb(255, 255, 255);
+            border: 2px solid rgb(255, 255, 255);
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            padding: 10px;
+            transition: background-color 0.3s, color 0.3s;
+            border-radius: 0;
+        }
+
+        #closeButton:hover {
+            background-color: rgba(255, 255, 255, 0);
+            color: rgb(255, 0, 0);
+        }
+
+        /* Random animation for gallery images */
+        @keyframes randomAnimation {
+            0% {
+                transform: translateY(0) rotate(0);
+            }
+            25% {
+                transform: translateY(-10px) rotate(10deg);
+            }
+            50% {
+                transform: translateY(10px) rotate(-10deg);
+            }
+            75% {
+                transform: translateY(0) rotate(0);
+            }
+            100% {
+                transform: translateY(0) rotate(0);
+            }
+        }
+
+        .gallery img:nth-child(odd) {
+            animation: randomAnimation 4s infinite alternate;
+        }
+
+        .gallery img:nth-child(even) {
+            animation: randomAnimation 4s infinite alternate-reverse;
+        }
+
+        /* Background animation */
+        @keyframes backgroundAnimation {
+            0% {
+                background-size: 100%;
+            }
+            100% {
+                background-size: 150%; /* Adjust the value for the desired scale */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="content">
+        <!-- Image gallery with Spotify links -->
+        <div class="gallery">
+            <a href="https://open.spotify.com/show/0QaotjT60AHWb9japT7I3t" target="_blank"><img src="cccc.png" alt="Episode 1"></a>
+            <!-- Add more image links as needed -->
+        </div>
+
+        <!-- Close button to go back to the main site -->
+        <button id="closeButton" onclick="goToMainSite()">Close</button>
+
+        <script>
+            function goToMainSite() {
+                window.location.href = 'index.html';
+            }
+        </script>
+    </body>
+
+    </html>
