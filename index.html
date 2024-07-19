@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fetish</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
     <style>
         /* Global styles */
@@ -25,7 +24,7 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            padding-top: 120px;
+            padding-top: 800px; /* Increased padding to move rectangles down */
         }
 
         /* Header styles */
@@ -34,55 +33,49 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: rgba(0, 0, 0, 0);
+            background-color: rgba(255, 0, 0, 0);
             position: absolute;
-            top: 0;
+            top: 50;
             left: 0;
             right: 0;
+            height: 500px; /* Increased height for the header */
             z-index: 1000;
             text-align: center;
+            padding: 20px;
         }
 
         .logo-container {
             cursor: pointer;
-            max-width: 700px;
-            position: relative;
             transition: transform 0.3s ease-in-out;
         }
 
         .logo-container:hover {
-            transform: scale(1.2);
+            transform: scale(1.1);
         }
 
         .logo-container img {
-            max-width: 100%;
-            height: fit-content;
-            transition: transform 0.3s ease-in-out, max-width 0.3s ease-in-out;
-        }
-
-        .logo-container img[src="logobrgs.png"] {
-            position: relative;
-            left: -160px;
+            max-width: 50%;
+            height: auto;
+            transition: transform 0.3s ease-in-out;
         }
 
         /* Text below the logo */
         .brnogs-text {
-            margin-top: -150px;
             font-size: 1.2em;
             font-weight: 400;
             color: #ffffff;
             line-height: 1.5;
             max-width: 600px;
             transition: opacity 0.5s ease-in-out;
+            margin-top: -20px;
         }
 
         /* Main content styles */
         .main-content {
-            padding-top: 600px;
             background-size: cover;
             background-position: center;
             min-height: 100vh;
-            background-image: url('jaj.JPG');
+            background-image: url('P1010006.JPG');
             position: relative;
             z-index: 1;
             animation: fadeIn 1s ease-in-out;
@@ -112,7 +105,8 @@
             transform: translateY(-10px);
         }
 
-        .shape object, .shape svg {
+        .shape object,
+        .shape svg {
             width: 100%;
             height: 100%;
         }
@@ -195,11 +189,11 @@
             transition: transform 0.3s ease-in-out;
         }
 
-        input[type="checkbox"]:checked + .switcher {
+        input[type="checkbox"]:checked+.switcher {
             background-color: #0015ff;
         }
 
-        input[type="checkbox"]:checked + .switcher::after {
+        input[type="checkbox"]:checked+.switcher::after {
             transform: translateX(25px);
         }
 
@@ -213,13 +207,12 @@
         /* Media queries for responsiveness */
         @media (max-width: 768px) {
             .brnogs-text {
-                margin-top: -100px;
                 font-size: 1em;
                 max-width: 90%;
             }
 
             .container {
-                padding-top: 60px;
+                padding-top: 320px; /* Adjusted padding for mobile view */
                 flex-direction: column;
                 align-items: center;
             }
@@ -237,21 +230,16 @@
             .shape-text p {
                 font-size: 0.9em;
             }
-
-            .logo-container img[src="logobrgs.png"] {
-                left: 0;
-            }
         }
 
         @media (max-width: 480px) {
             .brnogs-text {
-                margin-top: -80px;
                 font-size: 0.9em;
                 max-width: 90%;
             }
 
             .container {
-                padding-top: 40px;
+                padding-top: 340px; /* Adjusted padding for small mobile view */
                 flex-direction: column;
                 align-items: center;
             }
@@ -270,10 +258,6 @@
                 font-size: 0.8em;
             }
 
-            .logo-container img[src="logobrgs.png"] {
-                left: 0;
-            }
-
             .custom-cursor {
                 width: 15px;
                 height: 15px;
@@ -289,8 +273,7 @@
             <img id="logo" src="logofetish.png" alt="Fetish Magazine Logo">
         </div>
         <div class="brnogs-text" id="brnogsText">
-            <span>Fetish</span> Magazine is exploring the corners of fetishism, sexual objectification, and the tendencies
-            of fetishism.
+            <span>Fetish</span> Magazine is exploring the corners of fetishism, sexual objectification, and the tendencies of fetishism.
         </div>
     </header>
 
@@ -341,14 +324,9 @@
             'logobrgs.png'
         ];
 
-        const logoSizes = {
-            'logofetish.png': '100%',
-            'logobrgs.png': '150%'
-        };
-
         const fetishShapes = [
-            { title: 'WHAT IS FETISH?', description: 'Explore the foundational ideas behind Fetish Magazine.', link: 'article1.html' },
-            { title: 'COCOJAMBOs', description: 'Read the latest articles covering diverse topics.', link: 'article2.html' },
+            { title: 'WHAT IS FETISH?', description: 'Explore the foundational ideas behind fetishism.', link: 'article1.html' },
+            { title: 'FETISH OF COMODITY', description: 'Delve into the intricacies of modern consumer fetishes.', link: 'article2.html' },
             { title: 'WROCLAW', description: 'Listen to insightful discussions with industry experts.', link: 'article3.html' },
             { title: 'ANOTHER STUFF', description: 'View stunning visual content from Fetish Magazine.', link: 'article4.html' },
             { title: 'FETISH OF COMODITY', description: 'Stay updated with the latest issues and announcements.', link: 'subscribe.html' },
@@ -367,7 +345,6 @@
         };
 
         let currentImageIndex = 0;
-        let currentLogoIndex = 0;
         let useFetishImages = true;
 
         function changeBackgroundImage() {
@@ -379,10 +356,9 @@
         function changeLogo() {
             const logoImg = document.getElementById('logo');
             const brnogsText = document.getElementById('brnogsText');
-            logoImg.src = logos[currentLogoIndex];
-            logoImg.style.maxWidth = logoSizes[logos[currentLogoIndex]];
-            brnogsText.innerHTML = texts[logos[currentLogoIndex]];
-            currentLogoIndex = (currentLogoIndex + 1) % logos.length;
+            const logoFilename = logoImg.src.split('/').pop(); // Extract the filename from the full path
+            logoImg.src = useFetishImages ? logos[0] : logos[1];
+            brnogsText.innerHTML = texts[logoFilename];
         }
 
         function updateShapes() {
@@ -421,7 +397,7 @@
         changeBackgroundImage();
 
         // Set interval to change background image every 5 seconds (5000 milliseconds)
-        setInterval(changeBackgroundImage, 1000);
+        setInterval(changeBackgroundImage, 5000);
 
         // Custom cursor movement
         const customCursor = document.querySelector('.custom-cursor');
@@ -440,7 +416,6 @@
         document.getElementById('toggleSwitch').addEventListener('change', function () {
             useFetishImages = !this.checked;
             currentImageIndex = 0;
-            currentLogoIndex = this.checked ? 1 : 0;
             changeBackgroundImage();
             changeLogo();
             updateShapes();
@@ -448,10 +423,8 @@
             // Update the logo click behavior based on the switch state
             if (useFetishImages) {
                 document.querySelector('.logo-container').onclick = navigateToFetish;
-                document.getElementById('logo').src = logos[0];
             } else {
                 document.querySelector('.logo-container').onclick = navigateToBrnoGS;
-                document.getElementById('logo').src = logos[1];
             }
         });
 
@@ -461,4 +434,3 @@
 </body>
 
 </html>
-
