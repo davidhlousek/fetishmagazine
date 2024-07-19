@@ -1,0 +1,130 @@
+/* Global styles */
+body {
+    cursor: none;
+    background-size: cover;
+    background-position: center;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.logo-container {
+    position: relative;
+    cursor: pointer;
+}
+
+.logo-container img {
+    max-width: 50%;
+    height: auto;
+    margin-bottom: 1%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.logo-container img:hover {
+    transform: scale(1.2);
+}
+
+.menu-button {
+    background-color: transparent;
+    color: rgb(255, 255, 255);
+    border: 2px solid rgb(255, 255, 255);
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+    z-index: 1;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 0;
+}
+
+.menu-button:hover {
+    background-color: rgba(255, 255, 255, 0);
+    color: rgb(255, 0, 0);
+}
+
+.menu-bar {
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 100%;
+    overflow: hidden;
+    transition: width 0.3s ease-in-out;
+}
+
+.menu-bar.visible {
+    width: 250px;
+}
+
+.menu-bar a {
+    display: block;
+    color: rgb(255, 255, 255);
+    padding: 15px;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.menu-bar a:hover {
+    background-color: rgba(255, 255, 255, 0);
+    color: red;
+}
+
+.dawn-section {
+    background-color: #111;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+.dawn-section label {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.dawn-section input, .dawn-section button {
+    padding: 10px;
+    margin-top: 10px;
+    width: 80%;
+    border: none;
+    border-bottom: 2px solid #fff;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    background-color: transparent;
+    color: white;
+    outline: none;
+}
+
+.dawn-section button {
+    margin-top: 20px;
+    cursor: pointer;
+    background-color: transparent;
+    color: white;
+    border: 2px solid #fff;
+    font-weight: bold;
+    outline: none;
+}
+
+.custom-cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background-color: white; /* Filled dot */
+    border-radius: 50%;
+    mix-blend-mode: difference;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: transform 0.2s ease-in-out;
+    z-index: 9999;
+}
