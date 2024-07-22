@@ -14,7 +14,7 @@
             background-position: center;
             margin: 0;
             font-family: 'Poppins', sans-serif;
-            color: #ff0000;
+            color: #ffffff;
         }
 
         .container {
@@ -81,7 +81,16 @@
             overflow: hidden;
         }
 
-        .background-overlay {
+        .background-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .background-image {
             position: absolute;
             top: 0;
             left: 0;
@@ -89,8 +98,12 @@
             height: 100%;
             background-size: cover;
             background-position: center;
-            transition: margin-right 0s ease-in-out;;
+            transition: opacity 1s ease-in-out;
             opacity: 0;
+        }
+
+        .background-image.active {
+            opacity: 1;
         }
 
         /* Shape styles */
@@ -137,7 +150,7 @@
             position: fixed;
             width: 20px;
             height: 20px;
-            background-color: rgb(255, 255, 255);
+            background-color: white;
             border-radius: 50%;
             mix-blend-mode: difference;
             pointer-events: none;
@@ -288,7 +301,10 @@
 
     <!-- Main content -->
     <div class="main-content">
-        <div class="background-overlay" id="backgroundOverlay"></div>
+        <div class="background-container">
+            <div class="background-image" id="backgroundImage1"></div>
+            <div class="background-image" id="backgroundImage2"></div>
+        </div>
         <div class="container" id="shapeContainer">
             <!-- Shapes will be dynamically updated here -->
         </div>
@@ -305,24 +321,34 @@
         ];
 
         const fetishBackgroundImages = [
-            'P1010006.JPG',
-            'P1010012.JPG',
-            'P1010014.JPG',
-            'P1010015.JPG',
-            'P1010016.JPG',
-            'P1010018.JPG',
-            'P1010026.JPG',
-            'P1010033.JPG',
-            'P1010034.JPG',
-            'P1010035.JPG'
+            '/P1010006.JPG',
+            '/P1010012.JPG',
+            '/P1010014.JPG',
+            '/P1010015.JPG',
+            '/P1010016.JPG',
+            '/P1010018.JPG',
+            '/P1010026.JPG',
+            '/P1010033.JPG',
+            '/P1010034.JPG',
+            '/P1010035.JPG',
+            '/P1010036.JPG',
+            '/P1010037.JPG',
+            '/P1010038.JPG',
+            '/P1010039.JPG',
+            '/P1010040.JPG',
+            '/P1010041.JPG',
+            '/P1010042.JPG',
+            '/P1010043.JPG',
+            '/P1010044.JPG',
+            '/P1010045.JPG',
         ];
 
         const brnogsBackgroundImages = [
-            'brno1.JPG',
-            'brno2.JPG',
-            'brno3.JPG',
-            'brno4.JPG',
-            'brno5.JPG'
+            '/brno1.JPG',
+            '/brno2.JPG',
+            '/brno3.JPG',
+            '/brno4.JPG',
+            '/brno5.JPG'
         ];
 
         const logos = [
@@ -342,7 +368,7 @@
         const brnogsShapes = [
             { title: 'Who the F*@k are the Gs?', description: 'The Brno Gs stand as a local project that conduct podcasts...', link: 'brgs1.html' },
             { title: 'What Bistro Bastardo is?', description: 'All the flavours, I straight fell in love with it.', link: 'brgs2.html' },
-            { title: 'It was worth it (The sacrifice) right?', description: 'Yeah so it was just us (David, Ale and Tomas) from the beginning.', link: 'brgs3.html' },
+            { title: 'It was worth it (The sacrifice) right?', description: 'Yeah so it was just us (David, Ale, and Tomas) from the beginning.', link: 'brgs3.html' },
         ];
 
         const texts = {
@@ -352,34 +378,43 @@
 
         let currentImageIndex = 0;
         let useFetishImages = true;
+        let imageElements = [];
 
         function preloadImages(images, callback) {
             let loadedImages = 0;
-            let totalImages = images.length;
+            const totalImages = images.length;
 
-            images.forEach(image => {
+            images.forEach(src => {
                 const img = new Image();
+                img.src = src;
                 img.onload = () => {
                     loadedImages++;
                     if (loadedImages === totalImages) {
                         callback();
                     }
                 };
-                img.src = image;
             });
         }
 
         function changeBackgroundImage() {
             const backgroundImages = useFetishImages ? fetishBackgroundImages : brnogsBackgroundImages;
-            const overlay = document.getElementById('backgroundOverlay');
+            const currentImage = backgroundImages[currentImageIndex];
+            const nextImage = backgroundImages[(currentImageIndex + 1) % backgroundImages.length];
 
-            overlay.style.opacity = 0; // Fade out the current image
+            const image1 = document.getElementById('backgroundImage1');
+            const image2 = document.getElementById('backgroundImage2');
+
+            image1.style.backgroundImage = `url('${currentImage}')`;
+            image2.style.backgroundImage = `url('${nextImage}')`;
+
+            image1.classList.remove('active');
+            image2.classList.add('active');
+
             setTimeout(() => {
-                overlay.style.backgroundImage = url('${backgroundImages[currentImageIndex]}');
-                overlay.style.opacity = 1; // Fade in the new image
-            }, 500); // Time must match the transition duration
-
-            currentImageIndex = (currentImageIndex + 1) % backgroundImages.length;
+                image1.classList.add('active');
+                image2.classList.remove('active');
+                currentImageIndex = (currentImageIndex + 1) % backgroundImages.length;
+            }, 10); // Small timeout to allow the class to be applied and trigger the transition
         }
 
         function changeLogo() {
@@ -407,13 +442,13 @@
                 const div = document.createElement('div');
                 div.className = 'shape';
                 const shapePath = shapePaths[Math.floor(Math.random() * shapePaths.length)]; // Randomly choose shape.svg or shape2.svg
-                div.innerHTML = 
+                div.innerHTML = `
                     <object data="${shapePath}" type="image/svg+xml"></object>
                     <div class="shape-text">
                         <h3>${shape.title}</h3>
                         <p>${shape.description}</p>
                     </div>
-                ;
+                `;
                 div.onclick = function() {
                     navigateTo(shape.link);
                 };
@@ -429,18 +464,18 @@
             window.location.href = 'https://www.instagram.com/brno_gs/';
         }
 
-        // Initial preload of images
+        // Initial call to preload background images
         preloadImages(fetishBackgroundImages.concat(brnogsBackgroundImages), () => {
-            changeBackgroundImage(); // Set the initial background image
-            setInterval(changeBackgroundImage, 2000); // Set interval to change background image every 5 seconds
+            changeBackgroundImage();
+            setInterval(changeBackgroundImage, 1000); // Change background image every 5 seconds
         });
 
         // Custom cursor movement
         const customCursor = document.querySelector('.custom-cursor');
 
         document.addEventListener('mousemove', (e) => {
-            customCursor.style.left = ${e.clientX}px;
-            customCursor.style.top = ${e.clientY}px;
+            customCursor.style.left = `${e.clientX}px`;
+            customCursor.style.top = `${e.clientY}px`;
         });
 
         // Function to navigate to a different page
@@ -470,3 +505,4 @@
 </body>
 
 </html>
+
