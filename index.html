@@ -375,10 +375,6 @@
         let useFetishImages = true;
         let imageElements = [];
 
-        function preloadImages(images, callback) {
-            let loadedImages = 1;
-            const totalImages = images.length;
-
             images.forEach(src => {
                 const img = new Image();
                 img.src = src;
