@@ -76,23 +76,34 @@
 
         /* Main content styles */
         .main-content {
-            background-size: cover;
-            background-position: center;
-            min-height: 100vh;
-            background-image: url('P1010006.JPG');
             position: relative;
-            z-index: 1;
-            animation: fadeIn 1s ease-in-out;
+            min-height: 100vh;
+            overflow: hidden;
         }
 
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
+        .background-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
 
-            100% {
-                opacity: 1;
-            }
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: opacity 1s ease-in-out;
+            opacity: 0;
+        }
+
+        .background-image.active {
+            opacity: 1;
         }
 
         /* Shape styles */
@@ -290,6 +301,10 @@
 
     <!-- Main content -->
     <div class="main-content">
+        <div class="background-container">
+            <div class="background-image" id="backgroundImage1"></div>
+            <div class="background-image" id="backgroundImage2"></div>
+        </div>
         <div class="container" id="shapeContainer">
             <!-- Shapes will be dynamically updated here -->
         </div>
@@ -313,6 +328,7 @@
             '/P1010016.JPG',
             '/P1010018.JPG',
             '/P1010026.JPG',
+            '/P1010033.JPG',
             '/P1010034.JPG',
             '/P1010035.JPG',
             '/P1010036.JPG',
@@ -342,17 +358,17 @@
 
         const fetishShapes = [
             { title: 'WHAT IS FETISH?', description: 'Explore the foundational ideas behind fetishism.', link: 'article1.html' },
-            { title: 'FETISH OF COMODITY', description: 'Delve into the intricacies of modern consumer fetishes.', link: 'article2.html' },
+            { title: 'FETISH OF COMMODITY', description: 'Delve into the intricacies of modern consumer fetishes.', link: 'article2.html' },
             { title: 'WROCLAW', description: 'Listen to insightful discussions with industry experts.', link: 'article3.html' },
             { title: 'ANOTHER STUFF', description: 'View stunning visual content from Fetish Magazine.', link: 'article4.html' },
-            { title: 'FETISH OF COMODITY', description: 'Stay updated with the latest issues and announcements.', link: 'subscribe.html' },
+            { title: 'FETISH OF COMMODITY', description: 'Stay updated with the latest issues and announcements.', link: 'subscribe.html' },
             { title: 'About Us', description: 'Learn more about the team behind Fetish Magazine.', link: 'about.html' }
         ];
 
         const brnogsShapes = [
             { title: 'Who the F*@k are the Gs?', description: 'The Brno Gs stand as a local project that conduct podcasts...', link: 'brgs1.html' },
             { title: 'What Bistro Bastardo is?', description: 'All the flavours, I straight fell in love with it.', link: 'brgs2.html' },
-            { title: 'It was worth it(The sacrifice) right?', description: 'Yeah so it was just us (David, Ale and Tomas) from the beginning.', link: 'brgs3.html' },
+            { title: 'It was worth it (The sacrifice) right?', description: 'Yeah so it was just us (David, Ale, and Tomas) from the beginning.', link: 'brgs3.html' },
         ];
 
         const texts = {
@@ -362,11 +378,43 @@
 
         let currentImageIndex = 0;
         let useFetishImages = true;
+        let imageElements = [];
+
+        function preloadImages(images, callback) {
+            let loadedImages = 0;
+            const totalImages = images.length;
+
+            images.forEach(src => {
+                const img = new Image();
+                img.src = src;
+                img.onload = () => {
+                    loadedImages++;
+                    if (loadedImages === totalImages) {
+                        callback();
+                    }
+                };
+            });
+        }
 
         function changeBackgroundImage() {
             const backgroundImages = useFetishImages ? fetishBackgroundImages : brnogsBackgroundImages;
-            document.querySelector('.main-content').style.backgroundImage = `url('${backgroundImages[currentImageIndex]}')`;
-            currentImageIndex = (currentImageIndex + 1) % backgroundImages.length;
+            const currentImage = backgroundImages[currentImageIndex];
+            const nextImage = backgroundImages[(currentImageIndex + 1) % backgroundImages.length];
+
+            const image1 = document.getElementById('backgroundImage1');
+            const image2 = document.getElementById('backgroundImage2');
+
+            image1.style.backgroundImage = `url('${currentImage}')`;
+            image2.style.backgroundImage = `url('${nextImage}')`;
+
+            image1.classList.remove('active');
+            image2.classList.add('active');
+
+            setTimeout(() => {
+                image1.classList.add('active');
+                image2.classList.remove('active');
+                currentImageIndex = (currentImageIndex + 1) % backgroundImages.length;
+            }, 10); // Small timeout to allow the class to be applied and trigger the transition
         }
 
         function changeLogo() {
@@ -416,11 +464,11 @@
             window.location.href = 'https://www.instagram.com/brno_gs/';
         }
 
-        // Initial call to change background image
-        changeBackgroundImage();
-
-        // Set interval to change background image every 5 seconds (5000 milliseconds)
-        setInterval(changeBackgroundImage, 1000);
+        // Initial call to preload background images
+        preloadImages(fetishBackgroundImages.concat(brnogsBackgroundImages), () => {
+            changeBackgroundImage();
+            setInterval(changeBackgroundImage, 1000); // Change background image every 5 seconds
+        });
 
         // Custom cursor movement
         const customCursor = document.querySelector('.custom-cursor');
@@ -457,3 +505,4 @@
 </body>
 
 </html>
+
