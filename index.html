@@ -24,7 +24,7 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            padding-top: 800px; /* Increased padding to move rectangles down */
+            padding-top: 1000px; /* Increased padding to move rectangles down */
         }
 
         /* Header styles */
@@ -57,6 +57,10 @@
             max-width: 50%;
             height: auto;
             transition: transform 0.3s ease-in-out;
+        }
+
+        .logo-container img.brgs-logo {
+            max-width: 70% !important; /* Enlarged size for the brgs logo */
         }
 
         /* Text below the logo */
@@ -212,7 +216,7 @@
             }
 
             .container {
-                padding-top: 320px; /* Adjusted padding for mobile view */
+                padding-top: 100px; /* Adjusted padding for tablet view */
                 flex-direction: column;
                 align-items: center;
             }
@@ -239,7 +243,7 @@
             }
 
             .container {
-                padding-top: 340px; /* Adjusted padding for small mobile view */
+                padding-top: 1400px; /* Adjusted padding for small mobile view */
                 flex-direction: column;
                 align-items: center;
             }
@@ -309,6 +313,18 @@
             '/P1010016.JPG',
             '/P1010018.JPG',
             '/P1010026.JPG',
+            '/P1010034.JPG',
+            '/P1010035.JPG',
+            '/P1010036.JPG',
+            '/P1010037.JPG',
+            '/P1010038.JPG',
+            '/P1010039.JPG',
+            '/P1010040.JPG',
+            '/P1010041.JPG',
+            '/P1010042.JPG',
+            '/P1010043.JPG',
+            '/P1010044.JPG',
+            '/P1010045.JPG',
         ];
 
         const brnogsBackgroundImages = [
@@ -359,6 +375,13 @@
             const logoFilename = logoImg.src.split('/').pop(); // Extract the filename from the full path
             logoImg.src = useFetishImages ? logos[0] : logos[1];
             brnogsText.innerHTML = texts[logoFilename];
+
+            // Apply the class for larger logo
+            if (!useFetishImages) {
+                logoImg.classList.add('brgs-logo');
+            } else {
+                logoImg.classList.remove('brgs-logo');
+            }
         }
 
         function updateShapes() {
@@ -397,7 +420,7 @@
         changeBackgroundImage();
 
         // Set interval to change background image every 5 seconds (5000 milliseconds)
-        setInterval(changeBackgroundImage, 800);
+        setInterval(changeBackgroundImage, 1000);
 
         // Custom cursor movement
         const customCursor = document.querySelector('.custom-cursor');
@@ -413,7 +436,7 @@
         }
 
         // Function to toggle switch button
-        document.getElementById('toggleSwitch').addEventListener('change', function () {
+        document.getElementById('toggleSwitch').addEventListener('change', function() {
             useFetishImages = !this.checked;
             currentImageIndex = 0;
             changeBackgroundImage();
